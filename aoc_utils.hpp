@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <regex>
+#include <algorithm>
 
 int test_func_regex() {
     std::regex find("digit (\\d+)");
