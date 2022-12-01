@@ -1,13 +1,11 @@
 #include "../aoc_utils.hpp"
 
-int main() {
-    std::ifstream raw_test("test.txt");
-    std::ifstream raw_input("input.txt");
-
+std::vector<long> read_input(const char* filename) {
+    std::ifstream raw_input(filename);
     std::vector<long> data = {0};
 
-    for (std::string i; std::getline(raw_input, i); ){
-        if (i.empty()){
+    for (std::string i; std::getline(raw_input, i); ) {
+        if (i.empty()) {
             data.push_back(0);
             continue;
         }
@@ -20,12 +18,30 @@ int main() {
 
     std::sort(data.begin(), data.end());
 
-    std::cout << "First part: " << data[data.size() - 1] << "\n";
+    return data;
+}
 
+long part_1(const std::vector<long>& data) {
+    return data[data.size() - 1];
+}
+
+long part_2(const std::vector<long>& data) {
     long top3 = 0;
     for (size_t i = 0; i < 3; i++){
         top3 += data[data.size() - 1 - i];
     }
+    return top3;
+}
 
-    std::cout << "Second part: " << top3 << "\n";
+int main() {
+    auto test = read_input("test.txt");
+    auto input = read_input("input.txt");
+
+    std::cout << "Test\n";
+    std::cout << "1st part: " << part_1(test) << "\n";
+    std::cout << "2nd part: " << part_2(test) << "\n";
+
+    std::cout << "\nInput\n";
+    std::cout << "1st part: " << part_1(input) << "\n";
+    std::cout << "2nd part: " << part_2(input) << "\n";
 }
