@@ -4,6 +4,7 @@
 #include <fstream>
 #include <regex>
 #include <algorithm>
+#include <unordered_map>
 
 int test_func_regex() {
     std::regex find("digit (\\d+)");
